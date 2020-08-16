@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+             xmlns:converters="clr-namespace:Accounts.Core.Converters.UI"
+             mc:Ignorable="d"
+             x:Class="Accounts.Views.StanderdAccountCell">
+
+    <ContentView.Resources>      
+        <ResourceDictionary>
+                <converters:StringToColorConverter x:Key="stringToColorConverter"/>
+            <converters:NameToFormattedNameConverter x:Key="nameConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+  <ContentView.Content>
+      <Frame  Margin="0,0,0, 0" Padding="4,4,4, 4" CornerRadius="0" 
+              BorderColor="White" HasShadow="False"  >
+         
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1" />
+                </Grid.RowDefinitions>
+
+                <StackLayout IsClippedToBounds="True">
+                    <Image Source="{Binding PictureURI}" Margin="2,2,2,2" 
+                           VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"
+                     Aspect="AspectFit" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="1">
+
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Name: " Style="{StaticResource labelFieldStyle}"/>
+                                <Span Text="{Binding Name,Converter={StaticResource nameConverter}}"
+                                      Style="{StaticResource valueFieldStyle}"
+                                      TextColor="{Binding EyeColor, Converter={StaticResource stringToColorConverter}}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Age: " Style="{StaticResource labelFieldStyle}"/>
+                                <Span Text="{Binding Age}" Style="{StaticResource valueFieldStyle}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Account Balance: " Style="{StaticResource labelFieldStyle}"/>
+                                <Span Text="{Binding AccountBalance}" Style="{StaticResource valueFieldStyle}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+
+                <BoxView Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="{StaticResource GroupHeaderBackground}" Opacity="0.8"></BoxView>
+            </Grid>
+           
+        </Frame>
+  </ContentView.Content>
+</ContentView>
