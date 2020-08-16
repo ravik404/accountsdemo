@@ -5,7 +5,7 @@ Access and lists active accounts
 - TBA - detail explanation
 
 # Screenshots
-| ![iOS Accounts](screenshots/ios-accounts) | ![iOS Accounts](screenshots/android-accounts) |
+| ![iOS Accounts](screenshots/ios-accounts.png) | ![Android Accounts](screenshots/android-accounts.png) |
 
 # Notes
 - Please note that the service location is not set in the GitHub repository, if you like to run this app locally then would need to set the url in code (search for “CheckMe!”)
